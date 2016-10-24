@@ -25,7 +25,7 @@ public class DB_Connect extends HttpServlet {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection conn;
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/travel", "eric", "eric");
-            PreparedStatement pst = conn.prepareStatement("Select ID_USUARIO,PASSWORD from USUARIOS where user=? and pass=?");
+            PreparedStatement pst = conn.prepareStatement("Select ID_USUARIO,PASSWORD from USUARIOS where ID_USUARIO=? and PASSWORD=?");
             pst.setString(1, user);
             pst.setString(2, pass);
             ResultSet rs = pst.executeQuery();
