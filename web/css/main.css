@@ -86,6 +86,17 @@ body {
     color: #FFFFFF;
 }
 
+
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:13px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:13px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
+.tg .tg-mb3i{background-color:#D2E4FC;text-align:right;vertical-align:top}
+.tg .tg-v4ss{background-color:#D2E4FC;font-weight:bold;vertical-align:top}
+.tg .tg-lqy6{text-align:right;vertical-align:top}
+.tg .tg-3cas{background-color:#6ac14e;text-align:center;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+.tg .tg-6k2t{background-color:#D2E4FC;vertical-align:top}
+
 /* submenu */
 #nav li:hover ul.subs {
     display: block;
@@ -145,4 +156,5 @@ body {
         display: block;
         width: auto;
     }
+    
 }

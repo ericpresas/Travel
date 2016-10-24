@@ -19,7 +19,7 @@
     <body>
         <div class="container">
             <ul id="nav">
-                <li><a href="#">Home</a></li>
+                <li><a href="menu.html">Home</a></li>
                 <li><a href="#s1">Alta Vuelo</a>
                     <span id="s1"></span>
                     <ul class="subs">
@@ -51,6 +51,33 @@
                 </li>
                 <li class="active" ><a href="index.html">Log out</a></li>
             </ul>
+            
         </div>
+        <div style="align-self: center;">
+            <table class="tg" align="center">
+            <tr>
+              <th class="tg-3cas" colspan="7">Vuelo Creado<br></th>
+            </tr>
+            <tr>
+              <td class="tg-v4ss">ID Vuelo<br></td>
+              <td class="tg-v4ss">Numero Vuelo<br></td>
+              <td class="tg-v4ss">Company</td>
+              <td class="tg-v4ss">Origen</td>
+              <td class="tg-v4ss">Salida</td>
+              <td class="tg-v4ss">Destino</td>
+              <td class="tg-v4ss">Llegada</td>
+            </tr>
+            <tr>
+              <td class="tg-yw4l">1</td>
+              <td class="tg-yw4l">Swimming</td>
+              <td class="tg-lqy6">1:30</td>
+              <td class="tg-lqy6">2:05</td>
+              <td class="tg-lqy6">1:15</td>
+              <td class="tg-lqy6">1:15</td>
+              <td class="tg-lqy6">1:41</td>
+            </tr>
+        </table>
+        </div>
+        
     </body>
 </html>

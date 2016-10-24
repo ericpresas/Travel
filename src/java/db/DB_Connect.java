@@ -19,9 +19,7 @@ public class DB_Connect extends HttpServlet {
         PrintWriter out = response.getWriter();
         String user = request.getParameter("username");
         String pass = request.getParameter("password");
-        out.println("check!!!!!!!!!1");
         try {
-            //falla aqui: ...........
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection conn;
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/travel", "eric", "eric");
@@ -31,9 +29,11 @@ public class DB_Connect extends HttpServlet {
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 out.println("Correct login credentials");
+                response.sendRedirect("/travel/menu.html");
             } 
             else {
                 out.println("Incorrect login credentials");
+                response.sendRedirect("/travel/error.jsp");
             }
         } 
         catch (ClassNotFoundException | SQLException e) {
