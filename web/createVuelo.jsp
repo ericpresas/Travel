@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -26,14 +27,14 @@
                         <li><a href="javascript:showhide('crearvuelo')">Crear Vuelo</a></li>
                     <div id="crearvuelo" style="display: none;">
                         <form action="./createVuelo" method="post">
-                        <li>ID Vuelo: <input type="text" value="1234..." id="idvuelo"/></li><br>
-                        <li>Numero Vuelo: <input type="text" value="1234..." id="numvuelo"/></li><br>
-                        <li>Companyia: <input type="text" value="Flight company..." id="comp"/></li><br>
-                        <li>Origen: <input type="text" value="Origen..." id="origen"/></li><br>
-                        <li>Destino: <input type="text" value="Destino..." id="dest"/></li><br>
-                        <li>Hora Salida: <input type="text" value="HH:MM" id="salida"/></li><br>
-                        <li>Hora Llegada: <input type="text" value="HH:MM..." id="llegada"/></li><br><br>
-                        <input type="submit" value="Crear Vuelo"/>
+                            <li>ID Vuelo: <input type="text" value="1234..." name="idvuelo"/></li><br>
+                            <li>Numero Vuelo: <input type="text" value="1234..." name="numvuelo"/></li><br>
+                            <li>Companyia: <input type="text" value="Flight company..." name="comp"/></li><br>
+                            <li>Origen: <input type="text" value="Origen..." name="origen"/></li><br>
+                            <li>Destino: <input type="text" value="Destino..." name="dest"/></li><br>
+                            <li>Hora Salida: <input type="text" value="HH:MM" name="salida"/></li><br>
+                            <li>Hora Llegada: <input type="text" value="HH:MM..." name="llegada"/></li><br><br>
+                            <input type="submit" value="Crear Vuelo"/>
                         </form>
                     </div>        
                     </ul>
@@ -66,15 +67,10 @@
               <td class="tg-v4ss">Salida</td>
               <td class="tg-v4ss">Destino</td>
               <td class="tg-v4ss">Llegada</td>
-            </tr>
             <tr>
-              <td class="tg-yw4l">1</td>
-              <td class="tg-yw4l">Swimming</td>
-              <td class="tg-lqy6">1:30</td>
-              <td class="tg-lqy6">2:05</td>
-              <td class="tg-lqy6">1:15</td>
-              <td class="tg-lqy6">1:15</td>
-              <td class="tg-lqy6">1:41</td>
+              <c:forEach items="${travel}" var="element">
+                <td class="tg-yw4l"><c:out value="${element.toString()}" /></td>
+              </c:forEach>
             </tr>
         </table>
         </div>
