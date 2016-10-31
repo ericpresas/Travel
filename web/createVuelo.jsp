@@ -54,8 +54,8 @@
             </ul>
             
         </div>
-        <div style="align-self: center;">
-            <table class="tg" align="center">
+        <div class="container" >
+            <table class="tg">
             <tr>
               <th class="tg-3cas" colspan="7">Vuelo Creado<br></th>
             </tr>

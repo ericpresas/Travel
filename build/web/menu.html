@@ -42,9 +42,30 @@
                 <li><a href="#s2">Buscar Vuelo</a>
                     <span id="s2"></span>
                     <ul class="subs">
-                        <li><a href="#">Buscar por ID</a>
+                        <li><a href="javascript:showhide('crearvuelosimple')">Busqueda por ID</a>
                             <ul>
-                                <li><input type="text" value="id..." id="buscar"/></li>
+                                <div id="buscarvuelosimple" style="display: none;">
+                                <form action="./buscarVuelo" method="post">
+                                    <li>ID Vuelo: <input type="text" value="1234..." name="busquedasimple"/></li><br><br>
+                                    <input type="submit" value="Buscar Vuelo"/>
+                                </form>
+                                </div>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:showhide('buscarvuelo')">Busqueda avanzada</a>
+                            <ul>
+                                <div id="buscarvuelo" style="display: none;">
+                                <form action="./buscarVuelo" method="post">
+                                    <li>ID Vuelo: <input type="number" value="1234..." name="idvuelo"/></li><br>
+                                    <li>Numero Vuelo: <input type="text" value="1234..." name="numvuelo"/></li><br>
+                                    <li>Companyia: <input type="text" value="Flight company..." name="comp"/></li><br>
+                                    <li>Origen: <input type="text" value="Origen..." name="origen"/></li><br>
+                                    <li>Destino: <input type="text" value="Destino..." name="dest"/></li><br>
+                                    <li>Hora Salida Desde: <input type="text" value="HH:MM" name="salida"/></li><br>
+                                    <li>Hora Llegada Desde: <input type="text" value="HH:MM..." name="llegada"/></li><br><br>
+                                    <input type="submit" value="Buscar Vuelo"/>
+                                </form>
+                                </div>
                             </ul>
                         </li>
                     </ul>

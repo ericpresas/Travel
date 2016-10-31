@@ -8,13 +8,21 @@
         <servlet-name>createVuelo</servlet-name>
         <servlet-class>db.createVuelo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>buscarVuelo</servlet-name>
+        <servlet-class>db.buscarVuelo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DB_Connect</servlet-name>
         <url-pattern>/DB_Connect</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>createVuelo</servlet-name>
         <url-pattern>/createVuelo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscarVuelo</servlet-name>
+        <url-pattern>/buscarVuelo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
