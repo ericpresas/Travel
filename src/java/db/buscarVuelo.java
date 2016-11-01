@@ -55,60 +55,60 @@ public class buscarVuelo extends HttpServlet {
                 queryList.add(travel.get(0));
             }
             
-            if (travel.get(1)!=null && firstNull) {
+            if (travel.get(1)!="" && firstNull) {
                 query=query + "and num_vuelo=? ";
                 queryList.add(travel.get(1));
-            }else if(travel.get(1)!=null && firstNull==false){
+            }else if(travel.get(1)!="" && firstNull==false){
                 query=query + "num_vuelo=? ";
                 firstNull=true;
                 queryList.add(travel.get(1));
             }
             
-            if (travel.get(2)!=null && firstNull) {
+            if (travel.get(2)!="" && firstNull) {
                 query=query + "and companyia=? ";
                 queryList.add(travel.get(2));
-            }else if(travel.get(2)!=null && firstNull==false){
+            }else if(travel.get(2)!="" && firstNull==false){
                 query=query + "companyia=? ";
                 queryList.add(travel.get(2));
                 firstNull=true;
             }
             
-            if (travel.get(3)!=null && firstNull) {
+            if (travel.get(3)!="" && firstNull) {
                 query=query + "and origen=? ";
                 queryList.add(travel.get(3));
-            }else if(travel.get(3)!=null && firstNull==false){
+            }else if(travel.get(3)!="" && firstNull==false){
                 query=query + "origen=? ";
                 firstNull=true;
                 queryList.add(travel.get(3));
             }
             
-            if (travel.get(4)!=null && firstNull) {
+            if (travel.get(4)!="" && firstNull) {
                 query=query + "and hora_salida=? ";
                 queryList.add(travel.get(4));
-            }else if(travel.get(4)!=null && firstNull==false){
+            }else if(travel.get(4)!="" && firstNull==false){
                 query=query + "hora_salida=? ";
                 queryList.add(travel.get(4));
                 firstNull=true;
             }
             
-            if (travel.get(5)!=null && firstNull) {
+            if (travel.get(5)!="" && firstNull) {
                 query=query + "and destino=? ";
                 queryList.add(travel.get(5));
-            }else if(travel.get(5)!=null && firstNull==false){
+            }else if(travel.get(5)!="" && firstNull==false){
                 query=query + "destino=? ";
                 firstNull=true;
                 queryList.add(travel.get(5));
             }
             
-            if (travel.get(6)!=null && firstNull) {
+            if (travel.get(6)!="" && firstNull) {
                 query=query + "and hora_llegada>? ";
                 queryList.add(travel.get(6));
-            }else if(travel.get(6)!=null && firstNull==false){
+            }else if(travel.get(6)!="" && firstNull==false){
                 query=query + "and hora_llegada>? ";
                 firstNull=true;
                 queryList.add(travel.get(6));
             }      
-            
+            System.out.println(travel);
             if (option == 0){
                 pst = conn.prepareStatement(query);
                 for(int i=0;i<queryList.size();i++){
@@ -123,13 +123,16 @@ public class buscarVuelo extends HttpServlet {
             }
             List vuelos = new ArrayList();
             ResultSet Query = pst.executeQuery();
-            vuelos.add(Query.getString("ID_VUELO"));
+            while(Query.next()){
+            vuelos.add(Query.getInt("ID_VUELO"));
             vuelos.add(Query.getString("NUM_VUELO"));
-            vuelos.add(Query.getString(3));
-            vuelos.add(Query.getString(4));
-            vuelos.add(Query.getString(5));
-            vuelos.add(Query.getString(6));
-            vuelos.add(Query.getString(7));
+            vuelos.add(Query.getString("COMPANYIA"));
+            vuelos.add(Query.getString("ORIGEN"));
+            vuelos.add(Query.getString("HORA_SALIDA"));
+            vuelos.add(Query.getString("DESTINO"));
+            vuelos.add(Query.getString("HORA_LLEGADA"));
+            }
+
             request.setAttribute("searchqry", vuelos); 
             RequestDispatcher dispatcher = request.getRequestDispatcher("buscarVuelo.jsp");
             dispatcher.forward( request, response );

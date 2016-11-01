@@ -57,7 +57,7 @@
         <div style="align-self: center;">
             <table class="tg" align="center">
             <tr>
-              <th class="tg-3cas" colspan="7">Vuelo Creado<br></th>
+              <th class="tg-3cas" colspan="7">Busqueda<br></th>
             </tr>
             <tr>
               <td class="tg-v4ss">ID Vuelo<br></td>
@@ -73,27 +73,6 @@
               </c:forEach>
             </tr>
         </table>
-        </div>
-        <div style="align-self: center;">
-            <table class="tg" align="center">
-            <tr>
-              <th class="tg-3cas" colspan="7">Vuelo Creado<br></th>
-            </tr>
-            <tr>
-              <td class="tg-v4ss">ID Vuelo<br></td>
-              <td class="tg-v4ss">Numero Vuelo<br></td>
-              <td class="tg-v4ss">Company</td>
-              <td class="tg-v4ss">Origen</td>
-              <td class="tg-v4ss">Salida</td>
-              <td class="tg-v4ss">Destino</td>
-              <td class="tg-v4ss">Llegada</td>
-            <tr>
-              <c:forEach items="${travel}" var="element">
-                <td class="tg-yw4l"><c:out value="${element.toString()}" /></td>
-              </c:forEach>
-            </tr>
-        </table>
-        </div>
-        
+        </div>       
     </body>
 </html>
