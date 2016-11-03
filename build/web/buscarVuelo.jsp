@@ -1,5 +1,8 @@
-<!DOCTYPE html>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -17,10 +20,35 @@
             }
         </script>
     </head>
-    <body>
+        <body>
+
+        <%
+        Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/travel", "eric", "eric");
+            PreparedStatement pst;
+            String query="select companyia, origen, destino from vuelos";                
+            pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+        List comp = new ArrayList();
+        List orig = new ArrayList();
+        List dest = new ArrayList();
+
+        while ( rs.next() ) {
+            if (rs.getString("companyia")!=null) comp.add(rs.getString("companyia"));
+            if (rs.getString("origen")!=null) orig.add(rs.getString("origen"));
+            if (rs.getString("destino")!=null) dest.add(rs.getString("destino"));            
+        }
+        System.out.println(comp);
+        request.setAttribute("comp", comp);
+        request.setAttribute("orig", orig);
+        request.setAttribute("dest", dest);
+        conn.close();
+        
+        %>
         <div class="container">
             <ul id="nav">
-                <li><a href="menu.html">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#s1">Alta Vuelo</a>
                     <span id="s1"></span>
                     <ul class="subs">
@@ -43,17 +71,51 @@
                 <li><a href="#s2">Buscar Vuelo</a>
                     <span id="s2"></span>
                     <ul class="subs">
-                        <li><a href="#">Buscar por ID</a>
+                        <li><a href="javascript:showhide('buscarvuelosimple')">Menu de busqueda</a>
                             <ul>
-                                <li><input type="text" value="id..." id="buscar"/></li>
+                                <div id="buscarvuelosimple" style="display: none;">
+                                <form action="./buscarVuelo" method="post" id="bvuelo">
+                                    <li>Companyia: 
+                                         <select name="companyia" form="bvuelo">
+                                            <c:forEach items="${comp}" var="company" >
+                                                <option value="${company.toString()}">
+                                                    <c:out value="${company.toString()}" />
+                                                </option>
+                                            </c:forEach>
+                                        </select>
+                                    </li><br>
+                                    <li>Origen: 
+                                         <select name="origen" form="bvuelo">
+                                            <c:forEach items="${orig}" var="origen" >
+                                                <option value="${origen.toString()}">
+                                                    <c:out value="${origen.toString()}" />
+                                                </option>
+                                            </c:forEach>
+                                        </select>
+                                        </li><br>
+                                    <li>Destino: 
+                                         <select name="destino" form="bvuelo">
+                                            <c:forEach items="${dest}" var="destino" >
+                                                <option value="${destino.toString()}">
+                                                    <c:out value="${destino.toString()}" />
+                                                </option>
+                                            </c:forEach>
+                                        </select>                                  
+                                    </li><br>
+                                    <input type="submit" value="Buscar Vuelo"/>
+                                </form>
+                                    
+
+                                </div>
                             </ul>
                         </li>
+                        
                     </ul>
                 </li>
                 <li class="active" ><a href="index.html">Log out</a></li>
             </ul>
-            
         </div>
+
         <div style="align-self: center;">
             <table class="tg" align="center">
             <tr>
@@ -67,11 +129,17 @@
               <td class="tg-v4ss">Salida</td>
               <td class="tg-v4ss">Destino</td>
               <td class="tg-v4ss">Llegada</td>
-            <tr>
-              <c:forEach items="${searchqry}" var="search">
+   
+              <c:forEach items="${search}" var="search" varStatus="loop">
+                  <c:if test="${(loop.index)%7 == 0}">
+                     <tr>
+                  </c:if>
                 <td class="tg-yw4l"><c:out value="${search.toString()}" /></td>
+                  <c:if test="${(loop.index+1)%7 == 0}">
+                     </tr>
+                  </c:if>
               </c:forEach>
-            </tr>
+        
         </table>
         </div>       
     </body>

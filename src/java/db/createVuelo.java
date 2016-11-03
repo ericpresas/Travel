@@ -43,8 +43,8 @@ public class createVuelo extends HttpServlet {
             pst.setString(2,(String) travel.get(1));
             pst.setString(3,(String) travel.get(2));
             pst.setString(4,(String) travel.get(3));
-            pst.setString(5,(String) travel.get(4));
-            pst.setString(6,(String) travel.get(5));
+            pst.setString(5,(String) travel.get(5));
+            pst.setString(6,(String) travel.get(4));
             pst.setString(7,(String) travel.get(6));
             pst.executeUpdate();
             
@@ -52,11 +52,17 @@ public class createVuelo extends HttpServlet {
             System.out.println(travel);
             RequestDispatcher dispatcher = request.getRequestDispatcher("createVuelo.jsp");
             dispatcher.forward( request, response );
-            response.sendRedirect("/travel/createVuelo.jsp");
+            response.sendRedirect("/Travel-master/createVuelo.jsp");
             
         } 
         catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+
+              int missatge =3;
+            request.setAttribute("tipus", missatge); 
+            RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+            dispatcher.forward( request, response );
+
+             response.sendRedirect("/Travel-master/error.jsp");
         }
     }
 }

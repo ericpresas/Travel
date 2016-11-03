@@ -29,11 +29,15 @@ public class DB_Connect extends HttpServlet {
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 out.println("Correct login credentials");
-                response.sendRedirect("/travel/menu.html");
+                response.sendRedirect("/Travel-master/menu.jsp");
             } 
             else {
-                out.println("Incorrect login credentials");
-                response.sendRedirect("/travel/error.jsp");
+            int missatge =1;
+            request.setAttribute("tipus", missatge); 
+            RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+            dispatcher.forward( request, response );
+
+             response.sendRedirect("/Travel-master/error.jsp");
             }
         } 
         catch (ClassNotFoundException | SQLException e) {

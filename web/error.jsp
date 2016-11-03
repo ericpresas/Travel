@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html >
   <head>
@@ -80,13 +81,30 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 </head>
 
 <body>
-
-<div class="login">
-    <h1>Login failed</h1>
-    <form action="./index.html" method="post">
-
-<input type="submit" value="Log in again"/>
-    </form>
-</div>
+    <c:if test="${tipus == 1}">
+          <div class="login">
+          <h1>Login failed</h1>
+          <form action="./index.html" method="post">
+          <input type="submit" value="Log in again"/>
+              </form>
+          </div>
+    </c:if>
+    <c:if test="${tipus == 2}">
+        <div class="login">
+        <h1>Búsqueda fallida</h1>
+        <form action="./menu.jsp" method="post">
+        <input type="submit" value="Volver al menú"/>
+            </form>
+        </div>
+    </c:if>
+    <c:if test="${tipus == 3}">
+        <div class="login">
+        <h1>Login failed</h1>
+        <form action="./menu.jsp" method="post">
+        <input type="submit" value="Error al insertar el registro"/>
+            </form>
+        </div>
+    </c:if>
+      
 </body>
 </html>

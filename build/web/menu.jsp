@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <html lang="en">
+
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
@@ -21,7 +22,6 @@
         </script>
     </head>
     <body>
-
 
         <%
         Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -116,27 +116,5 @@
                 <li class="active" ><a href="index.html">Log out</a></li>
             </ul>
         </div>
-
-        <div class="container" >
-            <table class="tg">
-            <tr>
-              <th class="tg-3cas" colspan="7">Vuelo Creado<br></th>
-            </tr>
-            <tr>
-              <td class="tg-v4ss">ID Vuelo<br></td>
-              <td class="tg-v4ss">Numero Vuelo<br></td>
-              <td class="tg-v4ss">Company</td>
-              <td class="tg-v4ss">Origen</td>
-              <td class="tg-v4ss">Salida</td>
-              <td class="tg-v4ss">Destino</td>
-              <td class="tg-v4ss">Llegada</td>
-            <tr>
-              <c:forEach items="${travel}" var="element">
-                <td class="tg-yw4l"><c:out value="${element.toString()}" /></td>
-              </c:forEach>
-            </tr>
-        </table>
-        </div>
-        
     </body>
 </html>
